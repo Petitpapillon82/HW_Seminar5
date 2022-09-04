@@ -2,27 +2,30 @@
 Напишите программу, которая покажет количество чётных чисел в массиве.
 [345, 897, 568, 234] -> 2*/
 
-Console.WriteLine("Введите размер массива:  ");
-int size = Convert.ToInt32(Console.ReadLine());
-int[] numbers = new int[size];
-FillArrayRandomNumbers(numbers);
-Console.WriteLine("массив: ");
-PrintArray(numbers);
-int count = 0;
 
-for (int z = 0; z < numbers.Length; z++)
-if (numbers[z] % 2 == 0)
+Console.Clear();
+Console.WriteLine("Введите размер массива: ");
+int size = int.Parse(Console.ReadLine());
+int [] array = GetArray(size,100,1000);
+Console.WriteLine("Массив: ");
+PrintArray(array);
+
+int count = 0;
+for (int j = 0; j < size; j++)
+if (array[j] % 2 == 0)
 count++;
 
-Console.WriteLine($"В массиве {numbers.Length} чисел, из них чтных {count}");
+Console.WriteLine($"В массиве {size} чисел, из них чётных чисел: {count}");
 
-void FillArrayRandomNumbers(int[] numbers)
-{
-    for(int i = 0; i < numbers.Length; i++)
-    {
-        numbers[i] = new Random().Next(100,1000);
+int [] GetArray(int size, int min, int max){
+    int[] result = new int[size];
+
+    for(int i = 0; i < size; i++){
+        result[i] = new Random().Next(min, max + 1);
     }
+return result;
 }
+
 void PrintArray(int[] numbers)
 {
     Console.Write("[ ");
